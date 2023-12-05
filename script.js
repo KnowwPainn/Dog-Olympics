@@ -14,6 +14,7 @@ const fetchAllPlayers = async () => {
     try {
         const response = await fetch(`${APIURL}`);
         const players = await response.json();
+        // console.log(players)
         return players;
     } catch (err) {
         console.error('Uh oh, trouble fetching players!', err);
@@ -37,7 +38,10 @@ const addNewPlayer = async (playerObj) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(playerObj),
+            body: JSON.stringify( {
+                name: playerObj,
+                breed: "Dawg",
+            }),
         });
         const newPlayer = await response.json();
         return newPlayer;
@@ -61,7 +65,7 @@ const removePlayerFromRoster = async (playerId) => {
 /**
  * It takes an array of player objects, loops through them, and creates a string of HTML for each
  * player, then adds that string to a larger string of HTML that represents all the players. 
- * 
+ *
  * Then it takes that larger string of HTML and adds it to the DOM. 
  * 
  * It also adds event listeners to the buttons in each player card. 
@@ -81,6 +85,7 @@ const removePlayerFromRoster = async (playerId) => {
 ///////my code 
 const renderAllPlayers = (playerList) => {
     try {
+        playerList = playerList["data"]["players"];
         if (!Array.isArray(playerList)) {
             console.error('Uh oh, playerList is not an array:', playerList);
             return;
@@ -92,6 +97,7 @@ const renderAllPlayers = (playerList) => {
                 <div class="player-card">
                     <h3>${player.name}</h3>
                     <p>Player ID: ${player.id}</p>
+                    <img src=${player.imageUrl} alt=${player.name} width="300" height="250">
                     <button onclick="seePlayerDetails(${player.id})">See Details</button>
                     <button onclick="removePlayerFromRoster(${player.id})">Remove from Roster</button>
                 </div>
@@ -117,7 +123,7 @@ const renderNewPlayerForm = () => {
             event.preventDefault();
 
             const playerName = document.getElementById('playerName').value;
-            const newPlayer = await addNewPlayer({ name: playerName });
+            const newPlayer = await addNewPlayer(playerName);
 
             const updatedPlayers = await fetchAllPlayers();
             renderAllPlayers(updatedPlayers);
