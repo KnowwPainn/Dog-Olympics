@@ -62,17 +62,17 @@ const removePlayerFromRoster = async (playerId) => {
     }
 };
 
-const removePlayer = async(playerId) => {
-    try {
-        const response = await fetch(`${APIURL}/${playerId}`, {
-            method: 'DELETE',
-        });
-        return response;
-    }
-    catch (err) {
-        return null;
-    }
-}
+// const removePlayer = async(playerId) => {
+//     try {
+//         const response = await fetch(`${APIURL}/${playerId}`, {
+//             method: 'DELETE',
+//         });
+//         return response;
+//     }
+//     catch (err) {
+//         return null;
+//     }
+// }
 
 /**
  * It takes an array of player objects, loops through them, and creates a string of HTML for each
