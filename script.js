@@ -182,33 +182,4 @@ const init = async () => {
 
 init();
 
-/////given code 
-// const renderAllPlayers = (playerList) => {
-//     try {
-        
-//     } catch (err) {
-//         console.error('Uh oh, trouble rendering players!', err);
-//     }
-// };
-
-
-// /**
-//  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
-//  * fetches all players from the database, and renders them to the DOM.
-//  */
-// const renderNewPlayerForm = () => {
-//     try {
-        
-//     } catch (err) {
-//         console.error('Uh oh, trouble rendering the new player form!', err);
-//     }
-// }
-
-// const init = async () => {
-//     const players = await fetchAllPlayers();
-//     renderAllPlayers(players);
-
-//     renderNewPlayerForm();
-// }
-
-// init();
+1
