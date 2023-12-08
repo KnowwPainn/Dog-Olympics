@@ -59,7 +59,7 @@ const removePlayerFromRoster = async (playerId) => {
 
         if (response.ok) {
             console.log(`Player #${playerId} removed from the roster.`);
-            
+    
             // Fetch and render updated player list after removal
             const updatedPlayers = await fetchAllPlayers();
             renderAllPlayers(updatedPlayers);
@@ -118,6 +118,9 @@ const renderAllPlayers = (playerList) => {
                     <h3>${player.name}</h3>
                     <p>Player ID: ${player.id}</p>
                     <img src=${player.imageUrl} alt=${player.name} width="300" height="250">
+                        <div id=${player.id}>
+                        
+                        </div>
                     <button onclick="seePlayerDetails(${player.id})">See Details</button>
                     <button onclick="removePlayerFromRoster(${player.id})">Remove from Roster</button>
                 </div>
@@ -155,6 +158,7 @@ const renderNewPlayerForm = () => {
 
 const seePlayerDetails = async (playerId) => {
     const player = await fetchSinglePlayer(playerId);
+    document.getElementById(`${playerId}`).innerHTML = JSON.stringify(player);
     console.log(`Details for Player #${playerId}:`, player);
 };
 
