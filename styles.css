@@ -7,34 +7,18 @@
 
 /* Styling for player cards */
 .player-card {
-  position: relative;
-  border: 1px solid #ccc;
-  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   overflow: hidden;
-  width: 300px; /* Set a fixed width for the cards */
-  height: 300px; /* Set a fixed height for the cards */
-  display: inline-block; /* Display cards in a row */
-  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
-  perspective: 1000px; /* Add perspective for 3D effect */
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin: 10px;
+  width: 300px;
 }
 
 .player-card:hover {
-  transform: rotateY(180deg); /* Flip the card on hover */
-}
-
-.player-card div {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden; /* Hide the back face during the flip */
-}
-
-.player-card .front {
-  transform: rotateY(0deg);
-}
-
-.player-card .back {
-  transform: rotateY(180deg);
+  transform: scale(1.05);
 }
 
 .player-card img {
@@ -44,38 +28,25 @@
   border-bottom: 1px solid #ddd;
 }
 
-.player-card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  transform: translateY(100%); /* Move the content below the card */
-  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+.player-card h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
 }
 
-.player-card:hover .player-card-content {
-  transform: translateY(0); /* Show the content on hover */
-}
-
-.player-card h3, .player-card p {
-  margin: 0;
-  text-align: center;
+.player-card p {
+  margin-bottom: 10px;
 }
 
 .player-card button {
-  background-color: #ff4081;
+  background-color: #4CAF50;
   color: #fff;
   padding: 8px 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  margin-top: 10px;
 }
 
 .player-card button:hover {
-  background-color: #d81b60;
+  background-color: #45a049;
 }
