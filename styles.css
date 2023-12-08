@@ -52,6 +52,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
 .player-card p {
@@ -72,9 +73,10 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  position: relative;
+  bottom: auto;
+  right: auto;
+  z-index: 3;
 }
 
 .player-card button:hover {
