@@ -34,6 +34,9 @@ const fetchSinglePlayer = async (playerId) => {
 
 const addNewPlayer = async (playerObj) => {
     try {
+        const dog_img = await fetch(DOGIMGAPI);
+        const dog_content = await dog_img.json();
+        const dog_breed = dog_content["message"].split("/")[4];
         const response = await fetch(APIURL, {
             method: 'POST',
             headers: {
@@ -41,8 +44,8 @@ const addNewPlayer = async (playerObj) => {
             },
             body: JSON.stringify( {
                 name: playerObj,
-                breed: "Dawg",
-                imageUrl: "pass"
+                breed: `${dog_breed}`,
+                imageUrl: `${dog_content["message"]}`
             }),
         });
         const newPlayer = await response.json();
