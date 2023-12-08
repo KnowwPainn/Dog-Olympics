@@ -158,7 +158,18 @@ const renderNewPlayerForm = () => {
 
 const seePlayerDetails = async (playerId) => {
     const player = await fetchSinglePlayer(playerId);
-    document.getElementById(`${playerId}`).innerHTML = JSON.stringify(player);
+    // console.log(player);
+    const breed = player["data"]["player"]["breed"];
+    const cohortId = player["data"]["player"]["cohortId"];
+    const status = player["data"]["player"]["status"];
+
+    const html = `
+    <h3>Breed: ${breed}</h3>
+    <h3>Cohort ID: ${cohortId}</h3>
+    <h3>Status: ${status}</h3>
+    `;
+
+    document.getElementById(`${playerId}`).innerHTML = html;
     console.log(`Details for Player #${playerId}:`, player);
 };
 
