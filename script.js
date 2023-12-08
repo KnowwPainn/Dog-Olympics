@@ -52,16 +52,24 @@ const addNewPlayer = async (playerObj) => {
 
 const removePlayerFromRoster = async (playerId) => {
     try {
-        const deletedPlayer = await removePlayer(playerId);
-        console.log(`Player #${playerId} removed from the roster.`, deletedPlayer);
-        // Fetch and render updated player list after removal
-        const updatedPlayers = await fetchAllPlayers();
-        renderAllPlayers(updatedPlayers);
+        // Send a DELETE request to remove the player
+        const response = await fetch(`${APIURL}/${playerId}`, {
+            method: 'DELETE',
+        });
+
+        if (response.ok) {
+            console.log(`Player #${playerId} removed from the roster.`);
+            
+            // Fetch and render updated player list after removal
+            const updatedPlayers = await fetchAllPlayers();
+            renderAllPlayers(updatedPlayers);
+        } else {
+            console.error(`Error removing player #${playerId}. Status: ${response.status}`);
+        }
     } catch (err) {
         console.error('Error removing player from roster:', err);
     }
 };
-
 // const removePlayer = async(playerId) => {
 //     try {
 //         const response = await fetch(`${APIURL}/${playerId}`, {
